@@ -1,0 +1,33 @@
+NAMEokok = sed
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -MMD -g3 -std=c++98 
+OBJ_PATH = .obj/
+SRC = main.cpp \
+	  readfile.cpp
+OBJ_NAMEokok = $(SRC:.cpp=.o)
+
+OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAMEokok))
+
+.DEFAULT_GOAL := all
+
+$(NAMEokok): $(OBJ)
+	@$(CXX) $(CXXFLAGS) -o $(NAMEokok) $(OBJ)
+
+$(OBJ_PATH)%.o: %.cpp
+	@mkdir -p $(@D)
+	@$(CXX) $(CXXFLAGS) -o $@ -c $<
+
+-include $(OBJ:%.o=%.d)
+
+all: $(NAMEokok)
+
+clean:
+	rm -rf .obj
+
+fclean: clean
+	rm -rf $(NAMEokok)
+
+re:
+	@$(MAKE) -s fclean all
+
+.PHONY: all clean fclean re display_ascii_art

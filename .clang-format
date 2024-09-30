@@ -1,0 +1,17 @@
+---
+Language: Cpp
+standard: c++03
+IndentWidth: 4
+ColumnLimit: 100
+BreakBeforeBraces: Allman #Attach
+AllowShortFunctionsOnASingleLine: false
+TabWidth: 4
+PointerAlignement: Right
+SpacesBeforeTrailingComments: 1
+MaxEmptyLinesToKeep: 1
+IndentCaseLabels: True
+SpacesBeforeParens: ControlStatements
+AligneConsecutiveDeclaration: true
+AlignEscapedNewLines: Left
+SortIncludes: true
+---
