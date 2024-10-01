@@ -1,9 +1,10 @@
-NAME = ClapTrap
-CXX = c++
+NAME = FragTrap
+CXX = clang++
 CXXFLAGS = -Wall -Wextra -Werror -MMD -g3 -std=c++98 
 OBJ_PATH = .obj/
 SRC = main.cpp  \
 	  ClapTrap.cpp \
+	  FragTrap.cpp \
 	  ScavTrap.cpp
 OBJ_NAME = $(SRC:.cpp=.o)
 OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))

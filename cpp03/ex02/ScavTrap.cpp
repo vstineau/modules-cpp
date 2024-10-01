@@ -28,7 +28,13 @@ ScavTrap::ScavTrap(ScavTrap const & src)
 
 ScavTrap& ScavTrap::operator=(ScavTrap const & src)
 {
-	(void)src;
+	if (this != &src)
+	{
+		this->_name = src._name;
+		this->_energyPoint = src._energyPoint;
+		this->_hitPoint = src._hitPoint;
+		this->_attackDammage = src._attackDammage;
+	}
 	return (*this);
 }
 
