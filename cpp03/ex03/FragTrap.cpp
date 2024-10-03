@@ -7,7 +7,7 @@ FragTrap::FragTrap()
 
 FragTrap::FragTrap(std::string name)
 {
-	std::cout << "FragTrap default constuctor called\n";
+	std::cout << "FragTrap constuctor called\n";
 	this->_name = name;
 	this->_hitPoint = 100;
 	this->_energyPoint = 100;

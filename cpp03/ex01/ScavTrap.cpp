@@ -28,7 +28,23 @@ ScavTrap::ScavTrap(ScavTrap const & src)
 
 ScavTrap& ScavTrap::operator=(ScavTrap const & src)
 {
-	(void)src;
+	if (this != &src)
+	{
+		this->_name = src._name;
+		this->_hitPoint = src._hitPoint;
+		this->_energyPoint = src._energyPoint;
+		this->_attackDammage = src._attackDammage;
+	}
 	return (*this);
 }
 
+void ScavTrap::attack(std::string const & target)
+{
+	if (this->_energyPoint > 0)
+	{
+		std::cout << "robot named " << this->_name << " attacked " << target << " whith Scvavtrap attack and did " << _attackDammage << " damege\n";
+		this->_energyPoint--;
+		return ;
+	}
+	std::cout << "no energy point\n";
+}

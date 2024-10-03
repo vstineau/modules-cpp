@@ -18,8 +18,14 @@ ClapTrap::ClapTrap(ClapTrap const & src)
 
 ClapTrap& ClapTrap::operator=(ClapTrap const & src)
 {
-	(void)src;
-	return *this;
+	if (this != &src)
+	{
+		this->_name = src._name;
+		this->_hitPoint = src._hitPoint;
+		this->_energyPoint = src._energyPoint;
+		this->_attackDammage = src._attackDammage;
+	}
+	return (*this);
 }
 
 void ClapTrap::setAttackDammage(unsigned int amount)

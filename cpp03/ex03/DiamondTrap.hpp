@@ -4,8 +4,9 @@
 
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
-class DiamondTrap : public ScavTrap , public FragTrap {
+class DiamondTrap : virtual public ScavTrap , virtual public FragTrap {
 
 public:
 	DiamondTrap();
@@ -13,6 +14,8 @@ public:
 	DiamondTrap(DiamondTrap const & src);
 	~DiamondTrap();
 	DiamondTrap &operator=(DiamondTrap const & src);
+	void whoAmI() const;
+	void displayStat()const;
 
 private:
 	std::string _name;
