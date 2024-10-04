@@ -1,14 +1,16 @@
 
 #include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
 #include <iostream>
 
-ScavTrap::ScavTrap(std:: string name)
+ScavTrap::ScavTrap()
 {
-	std::cout << "Scavtrapp default constuctor called\n";
-	this->_name = name;
-	this->_hitPoint = 100;
-	this->_energyPoint = 50;
-	this->_attackDammage = 20;
+	std::cout << "Scavtrapp default constructor called\n";
+}
+
+ScavTrap::ScavTrap(std::string name): ClapTrap(name, 100, 50, 20)
+{
+	std::cout << "Scavtrapp parametric constructor called\n";
 }
 
 void  ScavTrap::guardGate(void)

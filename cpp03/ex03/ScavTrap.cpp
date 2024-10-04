@@ -1,18 +1,21 @@
 
 #include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
 #include <iostream>
 
 ScavTrap::ScavTrap()
 {
+	std::cout << "Scavtrapp default constructor called\n";
 }
 
-ScavTrap::ScavTrap(std:: string name)
+ScavTrap::ScavTrap(std::string name): ClapTrap(name, 100, 50, 20)
 {
-	std::cout << "Scavtrapp constuctor called\n";
-	this->_name = name;
-	this->_hitPoint = 100;
-	this->_energyPoint = 50;
-	this->_attackDammage = 20;
+	std::cout << "Scavtrapp parametric constructor called\n";
+}
+
+ScavTrap::ScavTrap(std:: string name, unsigned int hp, unsigned int ep, unsigned int ad): ClapTrap(name, hp, ep, ad)
+{
+	std::cout << "Scavtrapp parametric constructor called\n";
 }
 
 void  ScavTrap::guardGate(void)
@@ -34,10 +37,10 @@ ScavTrap& ScavTrap::operator=(ScavTrap const & src)
 {
 	if (this != &src)
 	{
-		this->_name = src._name;
 		this->_hitPoint = src._hitPoint;
 		this->_energyPoint = src._energyPoint;
 		this->_attackDammage = src._attackDammage;
+		this->_name = src._name;
 	}
 	return (*this);
 }

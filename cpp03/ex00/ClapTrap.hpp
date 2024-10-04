@@ -8,7 +8,7 @@ class ClapTrap {
 
 public:
 	ClapTrap();
-	ClapTrap(std:: string name);
+	ClapTrap(std::string name);
 	ClapTrap(ClapTrap const & src);
 	~ClapTrap();
 	ClapTrap &operator=(ClapTrap const & src);

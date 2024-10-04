@@ -5,14 +5,10 @@
 DiamondTrap::DiamondTrap()
 {}
 
-DiamondTrap::DiamondTrap(std::string name): ClapTrap(name), ScavTrap(name), FragTrap(name)
+DiamondTrap::DiamondTrap(std::string name): ClapTrap(name, 100, 50, 30), ScavTrap(name, 100, 50, 30), FragTrap(name, 100, 50, 30), _name(name)
 {
 	std::cout << "DiamondTrap constuctor called\n";
-	_hitPoint = 100;
-	_energyPoint = 50;
-	_attackDammage = 30;
 	this->ClapTrap::_name = name + "_clap_name";
-	this->_name = name;
 }
 
 DiamondTrap::~DiamondTrap()

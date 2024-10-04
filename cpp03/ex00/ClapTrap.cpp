@@ -3,13 +3,19 @@
 #include <iostream>
 
 ClapTrap::ClapTrap(): _hitPoint(10), _energyPoint(10), _attackDammage(0)
-{}
+{
+	std::cout << "ClapTrap default constructor called\n";
+}
 
 ClapTrap::ClapTrap(std::string name): _name(name), _hitPoint(10), _energyPoint(10), _attackDammage(0)
-{}
+{
+	std::cout << "ClapTrap parametric constructor called\n";
+}
 
 ClapTrap::~ClapTrap()
-{}
+{
+	std::cout << "ClapTrap default destructor called\n";
+}
 
 ClapTrap::ClapTrap(ClapTrap const & src)
 {
@@ -36,6 +42,11 @@ void ClapTrap::setAttackDammage(unsigned int amount)
 
 void	ClapTrap::attack(std::string const & target)
 {
+	if (this->_hitPoint == 0)
+	{
+		std::cout << this->_name << " is already dead " << std::endl;
+		return ;
+	}
 	if (this->_energyPoint == 0)
 	{
 		std::cout << "no energy point" << std::endl;
@@ -47,6 +58,11 @@ void	ClapTrap::attack(std::string const & target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
+	if (this->_hitPoint == 0)
+	{
+		std::cout << this->_name << " is already dead " << std::endl;
+		return ;
+	}
 	std::cout << this->_name << " has taken " << amount << " attack damage, ";
 	if (amount >= this->_hitPoint)
 	{
@@ -60,6 +76,11 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
+	if (this->_hitPoint == 0)
+	{
+		std::cout << this->_name << " is already dead " << std::endl;
+		return ;
+	}
 	if (this->_energyPoint == 0)
 	{
 		std::cout << "no energy point" << std::endl;

@@ -7,14 +7,15 @@
 class FragTrap : virtual public ClapTrap {
 
 public:
-	FragTrap();
+	FragTrap(std:: string name, unsigned int hp, unsigned int ep, unsigned int ad);
 	FragTrap(std:: string name);
 	FragTrap(FragTrap const & src);
 	~FragTrap();
 	FragTrap &operator=(FragTrap const & src);
 	void highFivesGuys(void);
 
-private:
+protected:
+	FragTrap();
 };
 
 #endif

@@ -1,17 +1,21 @@
 
 #include "FragTrap.hpp"
+#include "ClapTrap.hpp"
 #include <iostream>
 
 FragTrap::FragTrap()
-{}
-
-FragTrap::FragTrap(std::string name)
 {
-	std::cout << "FragTrap constuctor called\n";
-	this->_name = name;
-	this->_hitPoint = 100;
-	this->_energyPoint = 100;
-	this->_attackDammage = 30;
+	std::cout << "FragTrap default constuctor called\n";
+}
+
+FragTrap::FragTrap(std:: string name, unsigned int hp, unsigned int ep, unsigned int ad): ClapTrap(name, hp, ep, ad)
+{
+	std::cout << "FragTrap parametric constuctor called\n";
+}
+
+FragTrap::FragTrap(std::string name): ClapTrap(name, 100, 100, 30)
+{
+	std::cout << "FragTrap parametric constuctor called\n";
 }
 
 FragTrap::~FragTrap()
