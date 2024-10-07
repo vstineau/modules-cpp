@@ -1,4 +1,4 @@
-NAME = Poly
+NAME = executable
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -MMD -g3 -std=c++98 
 OBJ_PATH = .obj/
@@ -6,6 +6,7 @@ SRC = main.cpp  \
 	  Animal.cpp \
 	  Dog.cpp \
 	  Cat.cpp \
+	  Brain.cpp \
 	  WrongAnimal.cpp \
 	  WrongCat.cpp
 OBJ_NAME = $(SRC:.cpp=.o)
