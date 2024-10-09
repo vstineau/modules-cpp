@@ -10,9 +10,11 @@ class Cat : virtual public Animal {
 public:
 	Cat();
 	Cat(Cat const & src);
-	~Cat();
+	virtual ~Cat();
 	Cat &operator=(Cat const & src);
 	void makeSound() const;
+	void newIdea(int ideaIndex, std::string newIdea);
+	void displayIdea(int ideaIndex) const;
 
 private:
 	Brain *_brain;
