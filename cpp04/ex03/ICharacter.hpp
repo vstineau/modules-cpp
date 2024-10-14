@@ -1,7 +1,7 @@
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 
-#include "Utils.hpp"
+#include "utils.hpp"
 #include <string>
 
 class ICharacter {

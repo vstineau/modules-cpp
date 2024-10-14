@@ -11,10 +11,15 @@ Ice::~Ice()
 {}
 
 Ice::Ice(Ice const & src)
-{}
+{
+	*this = src;
+}
 
 Ice& Ice::operator=(Ice const & src)
-{}
+{
+	(void)src;
+	return (*this);
+}
 
 void Ice::use(ICharacter & target)
 {

@@ -3,17 +3,22 @@
 #include "ICharacter.hpp"
 #include <iostream>
 
-Cure::Cure()
+Cure::Cure(): AMateria("cure")
 {}
 
 Cure::~Cure()
 {}
 
 Cure::Cure(Cure const & src)
-{}
+{
+	*this = src;
+}
 
 Cure& Cure::operator=(Cure const & src)
-{}
+{
+	(void)src;
+	return (*this);
+}
 
 void Cure::use(ICharacter & target)
 {

@@ -5,6 +5,8 @@ OBJ_PATH = .obj/
 SRC = main.cpp \
 	AMateria.cpp \
 	Cure.cpp \
+	Character.cpp \
+	MateriaSource.cpp \
 	Ice.cpp
 OBJ_NAME = $(SRC:.cpp=.o)
 OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))

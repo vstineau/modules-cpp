@@ -2,7 +2,7 @@
 #ifndef ICE_HPP
 # define ICE_HPP
 
-#include "Utils.hpp"
+#include "utils.hpp"
 #include "AMateria.hpp"
 
 class Ice : public AMateria {
