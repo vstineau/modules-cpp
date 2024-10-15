@@ -32,6 +32,7 @@ void MateriaSource::learnMateria(AMateria *materia)
 		std::cout << "no space in memory for learn a new materia\n";
 		return ;
 	}
+	std::cout << "new materia " << materia->getType() << " learned\n";
 	this->_source[this->_materiaNb] = materia;
 	this->_materiaNb++;
 }
@@ -41,8 +42,11 @@ AMateria * MateriaSource::createMateria(std::string const & type)
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->_source[i] && this->_source[i]->getType() == type)
+		{
+			std::cout << "new materia " << type << " created\n";
 			return (this->_source[i]->clone());
+		}
 	}
-	std::cout << "i dont know tgis type\n";
+	std::cout << "i dont know this type\n";
 	return (0);
 }

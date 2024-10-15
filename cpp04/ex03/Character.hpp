@@ -23,9 +23,10 @@ private:
 	Character();
 	std::string _name;
 	AMateria *_item[4];
-	AMateria **_floor;
+	AMateria *_floor[10];
 	unsigned int _itemNb;
 	unsigned int _idx;
+	unsigned int _floorNb;
 };
 
 #endif
