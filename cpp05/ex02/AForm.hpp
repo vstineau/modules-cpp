@@ -5,7 +5,7 @@
 #include "Bureaucrat.hpp"
 #include <string>
 
-class Form {
+class AForm {
 
 public:
 	class GradeTooHighException : public std::exception
@@ -18,24 +18,26 @@ public:
 		public:
 			virtual const char *what() const throw();
 	};
-	Form(std::string name, unsigned int gts, unsigned int gte);
-	Form(Form const & src);
-	~Form();
-	Form &operator=(Form const & src);
+	AForm(std::string name, unsigned int gts, unsigned int gte, std::string target);
+	AForm(AForm const & src);
+	virtual ~AForm();
+	AForm &operator=(AForm const & src);
 	std::string const getName(void) const;
 	unsigned int getGte(void) const;
 	unsigned int getGts(void) const;
 	bool	getStatus() const;
 	void beSigned(Bureaucrat &bureaucrat);
+	virtual void execute(Bureaucrat &bureaucrat) = 0;
 
-private:
-	Form();
+protected:
+	AForm();
 	std::string const _name;
 	bool	_signed;
 	unsigned int const _gradeToSign;
 	unsigned int const _gradeToExecute;
+	std::string  _target;
 };
 
-std::ostream & operator<<(std::ostream & o, Form const & i);
+std::ostream & operator<<(std::ostream & o, AForm const & i);
 
 #endif

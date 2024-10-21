@@ -4,7 +4,7 @@
 
 #include <string>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 
@@ -27,7 +27,7 @@ public:
 	unsigned int getGrade(void) const;
 	void upgrade();
 	void downgrade();
-	void signForm(Form & form);
+	void signForm(AForm & form);
 
 private:
 	Bureaucrat(void);

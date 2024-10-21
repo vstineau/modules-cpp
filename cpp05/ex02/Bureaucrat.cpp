@@ -1,6 +1,6 @@
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <iostream>
 
 Bureaucrat::Bureaucrat()
@@ -76,7 +76,7 @@ void Bureaucrat::downgrade()
 	}
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(AForm &form)
 {
 //	if (form.getStatus())
 //	{
