@@ -2,7 +2,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
-#include <iostream>
+#include "Intern.hpp"
 #include <ctime>
 #include <cstdlib>
 
@@ -15,10 +15,14 @@ int main()
 	ShrubberyCreationForm papier1("home");
 	RobotomyRequestForm papier2("timmy");
 	PresidentialPardonForm papier3("stan");
-	numero1.signForm(papier1);
+	numero1.signForm(papier3);
 	numero1.executeForm(papier1);
 	numero2.signForm(papier2);
 	numero2.executeForm(papier2);
 	numero3.signForm(papier3);
 	numero3.executeForm(papier3);
+	Intern someRandomIntern;
+	AForm* rrf;
+	rrf = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
+	delete rrf;
 }
