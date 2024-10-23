@@ -27,7 +27,7 @@ public:
 	unsigned int getGts(void) const;
 	bool	getStatus() const;
 	void beSigned(Bureaucrat &bureaucrat);
-	virtual void execute(Bureaucrat &bureaucrat) = 0;
+	virtual void execute(Bureaucrat &bureaucrat) const = 0;
 
 protected:
 	AForm();

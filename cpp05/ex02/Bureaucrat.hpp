@@ -28,6 +28,7 @@ public:
 	void upgrade();
 	void downgrade();
 	void signForm(AForm & form);
+	void executeForm(AForm const & form);
 
 private:
 	Bureaucrat(void);

@@ -24,7 +24,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 	return (*this);
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat &bureaucrat)
+void ShrubberyCreationForm::execute(Bureaucrat &bureaucrat) const
 {
 	if (this->_signed == false)
 	{
@@ -32,11 +32,10 @@ void ShrubberyCreationForm::execute(Bureaucrat &bureaucrat)
 		return ;
 	}
 	std::string file = bureaucrat.getName() + "_shruberry";
-	if (bureaucrat.getGrade() > this->_gradeToSign)
+	if (bureaucrat.getGrade() > this->_gradeToExecute)
 		throw GradeTooLowException();
 	else
 	{
-		this->_signed = true;
 		std::ofstream ofs(file.c_str());
 		ofs << "  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣤⡾⠋⠷⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ \n";
 		ofs << "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⡆⣠⡰⡞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ \n";
