@@ -3,7 +3,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -MMD -g3 -std=c++98 
 OBJ_PATH = .obj/
 SRC = main.cpp  \
-	  Bureaucrat.cpp
+	  ScalarConverter.cpp
 OBJ_NAME = $(SRC:.cpp=.o)
 OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 
