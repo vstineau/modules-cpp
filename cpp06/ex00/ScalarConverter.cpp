@@ -43,7 +43,7 @@ void ScalarConverter::convert(std::string n)
 	
 	if (nb < std::numeric_limits<char>::min() || nb > std::numeric_limits<char>::max() || std::isnan(nb))
 		std ::cout << "char : impossible\n";
-	else if (!std::isprint(c))//!is_only_one_char(n) || !(i >= 32 && i <= 126))
+	else if (!std::isprint(c) || n[0] == '-')//!is_only_one_char(n) || !(i >= 32 && i <= 126))
 		std ::cout << "char : character non displayable\n";
 	else if (is_only_one_char(n))
 		std::cout << "char : " << static_cast<char>(c) << std::endl;
