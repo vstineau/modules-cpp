@@ -9,8 +9,14 @@ void switchupperlowercase(char &c)
 		c ^= (1 << 5);
 }
 
+void nbplus32(int &c)
+{
+		c ^= (1 << 5);
+}
+
 int main(void)
 {
+	int tab[4] = {0, 0, 0, 0};
 	std::string s = "test";
 	::iter(&s[0], s.length(), switchupperlowercase);
 	std::cout << s << std::endl;
@@ -20,4 +26,13 @@ int main(void)
 	std::string s2 = "tEsT3";
 	::iter(&s2[0], s2.length(), switchupperlowercase);
 	std::cout << s2 << std::endl;
+	std::cout << "tab before iter ";
+	for (int i = 0; i < 4; i++)
+		std::cout << tab[i] << " ";
+	std::cout << std::endl;
+	::iter(&tab[0], 4, nbplus32);
+	std::cout << "tab after iter ";
+	for (int i = 0; i < 4; i++)
+		std::cout << tab[i] << " ";
+	std::cout << std::endl;
 }
