@@ -1,7 +1,6 @@
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
-#include <cstddef>
 #include <exception>
 
 template <typename T>
@@ -13,15 +12,12 @@ public :
 		public :
 			virtual const char *what() const throw() { return "Error : wrong index\n";}
 	};
-	Array() :_size(0), _array(NULL)
+	Array() :_size(0)
 	{
 		_array = new T[0];
 	}
-	Array(unsigned int size) :_size(size)
-	{
-		for (unsigned int i = 0; i < size; i++)
-			_array[i] = NULL;
-	}
+	Array(unsigned int size) :_size(size), _array(new T[size])
+	{}
 	Array(Array const & src)
 	{
 		*this = src;
@@ -34,7 +30,14 @@ public :
 		for (unsigned int i = 0; i < _size; i++)
 			_array[i] = src._array[i];
 	}
-	~Array();
+	~Array()
+	{
+		delete [] _array;
+	}
+	unsigned int size() const
+	{
+		return this->_size;
+	}
 	T & operator[](unsigned int i)
 	{
 		if (i >= _size)
