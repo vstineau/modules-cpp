@@ -5,10 +5,10 @@
 #include <algorithm>
 
 template <typename T>
-int easyfind(T &container, int i)
+typename T::iterator easyfind(T &container, int i)
 {
-	int  result = std::find(container.begin(), container.end(), i);
-	if (result != container.end())
+	typename T::iterator  result = std::find(container.begin(), container.end(), i);
+	if (result == container.end())
 		throw std::exception();
 	return (result);
 }

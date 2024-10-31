@@ -13,9 +13,16 @@ int main(void)
 	my_vector.push_back(21);
 	my_vector.push_back(2);
 	my_vector.push_back(-15);
-	std::cout << "search of the first itteration of 2\n";
 	try {
-		std::cout << easyfind<std::vector<int> >(my_vector, 2) << std::endl;
+		std::cout << "search of the first itteration of 2\n";
+		std::vector<int>::iterator ite = easyfind(my_vector, 2);
+		std::cout << *ite << std::endl;
+		std::cout << "search of the first itteration of -15\n";
+		ite = easyfind(my_vector, -15);
+		std::cout << *ite << std::endl;
+		std::cout << "search of the first itteration of 232\n";
+		ite = easyfind(my_vector, 232);
+		std::cout << *ite << std::endl;
 	}
 	catch (std::exception &e)
 	{
