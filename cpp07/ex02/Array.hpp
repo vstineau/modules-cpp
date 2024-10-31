@@ -14,25 +14,39 @@ public :
 	};
 	Array() :_size(0)
 	{
-		_array = new T[0];
+		_array = NULL;
 	}
 	Array(unsigned int size) :_size(size), _array(new T[size])
-	{}
-	Array(Array const & src)
 	{
-		*this = src;
+		for (unsigned int i = 0; i < _size; i++)
+			_array[i] = T();
+	}
+	Array(Array const & src) : _size(src._size)
+	{
+		_array = new T[src._size];
+		for (unsigned int i = 0; i < _size; i++)
+			_array[i] = T();
 	}
 	Array & operator=(Array const & src)
 	{
-		this->_size = src._size;
-		delete [] _array;
-		_array = new T[src._size] ;
-		for (unsigned int i = 0; i < _size; i++)
-			_array[i] = src._array[i];
+		if (this != &src)
+		{
+			this->_size = src._size;
+			if (_array != NULL)
+				delete [] _array;
+			_array = new T[src._size] ;
+			for (unsigned int i = 0; i < _size; i++)
+			{
+				_array[i] = T();
+				_array[i] = src._array[i];
+			}
+		}
+			return (*this);
 	}
 	~Array()
 	{
-		delete [] _array;
+		if (_array)
+			delete [] _array;
 	}
 	unsigned int size() const
 	{
