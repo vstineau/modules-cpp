@@ -31,6 +31,13 @@ void Span::addNumber(int newNb)
 		throw NoMoreSPaceException();
 }
 
+int Span::shortestSpan() const
+{
+	int result = 0;
+	std::vector<int>::iterator ite = _vecti.begin();
+
+}
+
 const char *Span::NoMoreSPaceException::what() const throw()
 {
 	return ("no more space in span, can't add another integrer\n");

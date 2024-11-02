@@ -23,8 +23,8 @@ public:
 	~Span();
 	Span &operator=(Span const & src);
 	void addNumber(int newNb);
-	int shortestSpan();
-	int longestSpan();
+	int shortestSpan() const;
+	int longestSpan() const;
 
 private:
 	Span();
