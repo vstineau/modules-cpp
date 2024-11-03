@@ -1,6 +1,6 @@
 NAME = executable
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -MMD -g3 -std=c++98 
+CXX = clang++
+CXXFLAGS = -Wall -Wextra -Werror -MMD -g3 -std=c++98 -gdwarf-4
 OBJ_PATH = .obj/
 SRC = main.cpp \
 			Span.cpp

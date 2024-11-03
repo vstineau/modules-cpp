@@ -2,18 +2,18 @@
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
-#include <algorithm>
+#include <vector>
 #include <exception>
 
 class Span {
 
 public:
-	class NoMoreSPaceException : std::exception
+	class NoMoreSPaceException : public std::exception
 	{
 		public:
 			virtual const char *what() const throw();
 	};
-	class NoEnoughNumberException : std::exception
+	class NoEnoughNumberException : public std::exception
 	{
 		public:
 			virtual const char *what() const throw();
@@ -23,7 +23,8 @@ public:
 	~Span();
 	Span &operator=(Span const & src);
 	void addNumber(int newNb);
-	int shortestSpan() const;
+	void addManyNumber(std::vector<int> &newvect);
+	int shortestSpan();
 	int longestSpan() const;
 
 private:
