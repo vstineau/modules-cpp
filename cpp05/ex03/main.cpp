@@ -23,6 +23,6 @@ int main()
 	numero3.executeForm(papier3);
 	Intern someRandomIntern;
 	AForm* rrf;
-	rrf = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
+	rrf = someRandomIntern.makeForm("RobotomdsdssdsyRequestForm", "Bender");
 	delete rrf;
 }
