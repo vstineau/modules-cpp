@@ -1,6 +1,6 @@
 NAME = executable
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -MMD -g3 -std=c++98 
+CXXFLAGS = -Wall -Wextra -Werror -MMD -g3 -std=c++98
 OBJ_PATH = .obj/
 SRC = main.cpp
 OBJ_NAME = $(SRC:.cpp=.o)
@@ -28,4 +28,4 @@ fclean: clean
 re:
 	@$(MAKE) -s fclean all
 
-.PHONY: all clean fclean re display_ascii_art
+.PHONY: all clean fclean re
