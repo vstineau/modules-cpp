@@ -19,4 +19,5 @@ int main(int argc, char *argv[])
 	std::string file = readfile(ifs);
 	std::string input = readfile(ifs2);
 	fillMap(file, bitcoinInfo);
+
 }

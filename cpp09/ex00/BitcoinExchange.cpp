@@ -62,3 +62,7 @@ void fillMap(std::string file, std::map<Date, float> &db)
 //	  std::cout << it->first << " " << it->second << std::endl;
 //	}
 }
+
+void checkInput(std::string file, std::map<Date, float> &bitcoinInfo)
+{
+}

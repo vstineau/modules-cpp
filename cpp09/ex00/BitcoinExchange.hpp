@@ -9,6 +9,7 @@
 
 std::string	readfile(std::ifstream &ifs);
 void fillMap(std::string file, std::map<Date, float> &bitcoinInfo);
+void checkInput(std::string file, std::map<Date, float> &bitcoinInfo);
 std::ostream &operator<<(std::ostream &o, Date const &d);
 
 #endif
