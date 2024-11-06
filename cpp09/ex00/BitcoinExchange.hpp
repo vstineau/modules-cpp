@@ -2,15 +2,13 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
-class BitcoinExchange {
+#include <fstream>
+#include <string>
+#include <map>
+#include "Date.hpp"
 
-public:
-	BitcoinExchange();
-	BitcoinExchange(BitcoinExchange const & src);
-	~BitcoinExchange();
-	BitcoinExchange &operator=(BitcoinExchange const & src);
-
-private:
-};
+std::string	readfile(std::ifstream &ifs);
+void fillMap(std::string file, std::map<Date, float> &bitcoinInfo);
+std::ostream &operator<<(std::ostream &o, Date const &d);
 
 #endif
