@@ -43,7 +43,7 @@ static int search_data(std::map<Date, float> &db, Date &date, float &value)
 		return (4);
 	if (value < 0)
 		return (1);
-	if (value > 2147483647.0)
+	if (value > 1000.0)
 		return (2);
 	if (db[date])
 	{
