@@ -15,9 +15,8 @@ int main(int argc, char *argv[])
 		std::cerr << "can't open file\n";
 		return (1);
 	}
-	std::map<Date, float> bitcoinInfo;
+	std::map<Date, float> db;
 	std::string file = readfile(ifs);
-	std::string input = readfile(ifs2);
-	fillMap(file, bitcoinInfo);
-
+	fillMap(file, db);
+	checkInput(ifs2, db);
 }

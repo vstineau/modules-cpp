@@ -37,31 +37,15 @@ Date& Date::operator=(Date const & src)
 	return (*this);
 }
 
-unsigned int Date::getYear() const
-{
-	return (_year);
-}
 
-unsigned int Date::getMonth() const
+int Date::checkDate() const
 {
-	return (_month);
-}
-
-unsigned int Date::getDay() const
-{
-	return (_day);
-}
-
-void Date::setDate(int y, int m, int d)
-{
-	if (invalidDate(y, m, d))
+	if (invalidDate(_year, _month, _day))
 	{
 		std::cerr << "Error: invalid date\n";
-		return ;
+		return (1);
 	}
-	_year = y;
-	_month = m;
-	_day = d;
+	return (0);
 }
 
 bool Date::operator==(Date const & src)
@@ -84,6 +68,8 @@ bool Date::operator<(Date const & src) const
 
 std::ostream &operator<<(std::ostream &o, Date const &d)
 {
-	o << d.getYear() << "-" << d.getMonth() << "-" << d.getDay();
+	o << d._year << "-";
+	d._month < 10 ? o << "0" <<d._month << "-" : o << d._month;
+	d._day < 10 ? o << "0" <<d._day : o << d._day;
 	return (o);
 }
