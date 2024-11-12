@@ -1,8 +1,7 @@
 #include <iostream>
-#include <vector>
-#include <list>
 #include <cstdlib>
 #include <limits>
+#include "PmergeMe.hpp"
 
 int check_error(int argc, char *argv[])
 {
@@ -28,13 +27,11 @@ int main(int argc, char *argv[])
 	if (check_error(argc, argv))
 		return (1);
 	std::vector<int> vect;
-	for (int i = 0; argv[i] != 0; i++)
+	for (int i = 1; argv[i] != 0; i++)
 		vect.push_back(atoi(argv[i]));
-	for (std::vector<int>::iterator it = vect.begin(); it != vect.end(); it++)
-		std::cout << *it << std::endl;
-	std::list<int>	list;
-	for (int i = 0; argv[i] != 0; i++)
-		list.push_back(atoi(argv[i]));
-	for (std::list<int>::iterator it = list.begin(); it != list.end(); it++)
-		std::cout << *it << std::endl;
+	sort_vector(vect);
+	std::deque<int>	dq;
+	for (int i = 1; argv[i] != 0; i++)
+		dq.push_back(atoi(argv[i]));
+//	sort_deque(dq);
 }
