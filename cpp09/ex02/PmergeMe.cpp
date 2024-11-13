@@ -1,47 +1,60 @@
 #include <iostream>
 #include "PmergeMe.hpp"
-#include <algorithm>
 
-void Pair::swap()
+int Jacobsthal(int n)
 {
-	int temp;
-	temp = _a;
-	_a = _b;
-	_b = temp;
+    if (n == 0)
+        return 0;
+    if (n == 1)
+        return 1;
+    return Jacobsthal(n - 1) + 2 * Jacobsthal(n - 2);
 }
 
-void Pair::setPair(int a, int b)
+void merge_sort(std::vector<int> &big, int start, int end)
 {
-	_a = a;
-	_b = b;
+	//use merge sort to sort the big vector
+	(void)big;
+	(void)start;
+	(void)end;
 }
 
-int Pair::getA() const
+void insert_value(std::vector<int> &big,std::vector<int> &small)
 {
-	return (_a);
-}
-
-int Pair::getB() const
-{
-	return (_b);
+	//insert small value in sorted big vector with binary search
+	(void)big;
+	(void)small;
 }
 
 void sort_vector(std::vector<int> &vect)
 {
 	size_t size = vect.size();
-	size % 2 ? size = size / 2 + 1 : size /= 2;
-	Pair pairs[size];
+	bool odd = vect.size() % 2;
+	int last = 0;
+	if (odd)
+		last = vect[size - 1];
+	size /= 2;
+	std::vector<std::pair<int, int> > pairs(size);
 	int j = 0;
 	for (size_t i = 0; i < size; i++)
 	{
-		pairs[i].setPair(vect[j], vect[j + 1]);
+		pairs.push_back(std::make_pair(vect[j], vect[j + 1]));
 		j += 2;
 	}
 	for (size_t i = 0; i < size; i++)
-		pairs[i].getA() < pairs[i].getB() ? pairs[i].swap(): (void)i;
+		pairs[i].first < pairs[i].second ? std::swap(pairs[i].first, pairs[i].second): (void)i;
+
+	std::vector<int> big;
+	std::vector<int> small;
+	std::vector<int> jacob;
+	for (size_t i = 0; i < size; i++)
+		jacob.push_back(i);
 	for (size_t i = 0; i < size; i++)
 	{
-		std::cout << "pair nb " << i << std::endl;
-		std::cout << pairs[i].getA() << pairs[i].getB() << std::endl;
+		big.push_back(pairs[i].first);
+		small.push_back(pairs[i].second);
 	}
+	merge_sort(big, 0, big.size() - 1);
+	insert_value(big, small);
+	if (odd)
+		;//insert last with binary search
 }

@@ -26,6 +26,10 @@ int main(int argc, char *argv[])
 {
 	if (check_error(argc, argv))
 		return (1);
+	std::cout << "Before : ";
+	for (int i = 1; i < argc; i++)
+		std::cout << argv[i] << " ";
+	std::cout << std::endl;
 	std::vector<int> vect;
 	for (int i = 1; argv[i] != 0; i++)
 		vect.push_back(atoi(argv[i]));
