@@ -56,7 +56,7 @@ void insert_value(std::vector<int> &big,std::vector<int> &small)
 	//insert small value in sorted big vector with binary search
 }
 
-void sort_vector(std::vector<int> &vect)
+std::clock_t sort_vector(std::vector<int> &vect)
 {
 	size_t size = vect.size();
 	bool odd = vect.size() % 2;
@@ -95,4 +95,5 @@ void sort_vector(std::vector<int> &vect)
 	insert_value(big, small);
 	if (odd)
 		;//insert last with binary search
+	return (std::clock());
 }

@@ -3,8 +3,15 @@
 
 #include <algorithm>
 #include <vector>
+#include <ctime>
 #include <deque>
 
-void sort_vector(std::vector<int> &vect);
+typedef struct s_time
+{
+	std::clock_t start;
+	std::clock_t end;
+} t_time;
+
+std::clock_t sort_vector(std::vector<int> &vect);
 
 #endif

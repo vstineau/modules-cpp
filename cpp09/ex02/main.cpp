@@ -3,6 +3,7 @@
 #include <limits>
 #include "PmergeMe.hpp"
 
+
 int check_error(int argc, char *argv[])
 {
 	if (argc < 3)
@@ -31,11 +32,15 @@ int main(int argc, char *argv[])
 		std::cout << argv[i] << " ";
 	std::cout << std::endl;
 	std::vector<int> vect;
+	t_time v;
+	t_time d;
 	for (int i = 1; argv[i] != 0; i++)
 		vect.push_back(atoi(argv[i]));
-	sort_vector(vect);
+	v.start = std::clock();
+	v.end  = sort_vector(vect);
 	std::deque<int>	dq;
 	for (int i = 1; argv[i] != 0; i++)
 		dq.push_back(atoi(argv[i]));
-//	sort_deque(dq);
+	//d.start = std::clock();
+//	d.end = sort_deque(dq);
 }
