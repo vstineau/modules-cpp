@@ -2,10 +2,8 @@
 #define PMERGEME_HPP
 
 #include <algorithm>
-#include <vector>
 #include <ctime>
 #include <iostream>
-#include <deque>
 
 typedef struct s_time
 {
@@ -56,6 +54,13 @@ void merge_sort(C &big, int left, int right)
 	merge(big, left, middle, right);
 }
 
+template <typename C>
+void insert_value(C &big, C &small)
+{
+	(void)big;
+	(void)small;
+}
+
 template <typename C, typename P>
 std::clock_t sort(C &cont)
 {
@@ -65,7 +70,7 @@ std::clock_t sort(C &cont)
 	if (odd)
 		last = cont[size - 1];
 	size /= 2;
-	P pairs(size); //maybe add typename for container<std::pair<int> >
+	P pairs;
 	int j = 0;
 	for (size_t i = 0; i < size; i++)
 	{
@@ -79,23 +84,28 @@ std::clock_t sort(C &cont)
 	C jacob;
 	for (size_t i = 0; i < size; i++)
 		jacob.push_back(i);
-	for (typename P::iterator it = pairs.begin(); it != pairs.end(); it++)
+	for (typename P::iterator it = pairs.begin(); it < pairs.end(); it++)
 	{
 		big.push_back(it->first);
 		small.push_back(it->second);
 	}
-	std::cout << "big : ";
+	std::cout << "small : ";
+	for (typename C::iterator it = small.begin(); it != small.end(); it++)
+		std::cout << *it << " ";
+	std::cout << "\n";
+	std::cout << "big before sort: ";
 	for (typename C::iterator it = big.begin(); it != big.end(); it++)
 		std::cout << *it << " ";
 	std::cout << "\n";
 	merge_sort(big, 0, big.size() - 1);
-	std::cout << "big : ";
+	std::cout << "big after sort before insertion: ";
 	for (typename C::iterator it = big.begin(); it != big.end(); it++)
 		std::cout << *it << " ";
 	std::cout << "\n";
-	//insert_value(big, small);
+	insert_value(big, small);
 	if (odd)
 		(void)last;//insert last with binary search
 	return (std::clock());
 }
+
 #endif

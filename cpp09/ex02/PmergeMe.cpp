@@ -50,12 +50,12 @@ int Jacobsthal(int n)
 //	merge(big, left, middle, right);
 //}
 
-void insert_value(std::vector<int> &big,std::vector<int> &small)
-{
-	//insert small value in sorted big vector with binary search
-	(void)big;
-	(void)small;
-}
+//void insert_value(std::vector<int> &big,std::vector<int> &small)
+//{
+//	//insert small value in sorted big vector with binary search
+//	(void)big;
+//	(void)small;
+//}
 
 //std::clock_t sort_vector(std::vector<int> &vect)
 //{

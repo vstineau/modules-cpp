@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include <limits>
 #include "PmergeMe.hpp"
+#include <vector>
+#include <deque>
 
 
 int check_error(int argc, char *argv[])
@@ -37,10 +39,12 @@ int main(int argc, char *argv[])
 	for (int i = 1; argv[i] != 0; i++)
 		vect.push_back(atoi(argv[i]));
 	v.start = std::clock();
-	v.end  = sort<std::vector<int>, std::vector<std::pair<int, int> > >(vect);
+	//v.end  = sort<std::vector<int>, std::vector<std::pair<int, int> > >(vect);
 	std::deque<int>	dq;
 	for (int i = 1; argv[i] != 0; i++)
 		dq.push_back(atoi(argv[i]));
+	d.start = std::clock();
+	d.end  = sort<std::deque<int>, std::deque<std::pair<int, int> > >(dq);
 	(void)v;
 	(void)d;
 	//d.start = std::clock();
