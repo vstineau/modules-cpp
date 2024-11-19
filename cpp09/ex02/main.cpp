@@ -24,7 +24,6 @@ int check_error(int argc, char *argv[])
 	return (0);
 }
 
-
 int main(int argc, char *argv[])
 {
 	if (check_error(argc, argv))
@@ -39,14 +38,16 @@ int main(int argc, char *argv[])
 	for (int i = 1; argv[i] != 0; i++)
 		vect.push_back(atoi(argv[i]));
 	v.start = std::clock();
-	//v.end  = sort<std::vector<int>, std::vector<std::pair<int, int> > >(vect);
+	v.end  = sort<std::vector<int>, std::vector<std::pair<int, int> > >(vect);
 	std::deque<int>	dq;
 	for (int i = 1; argv[i] != 0; i++)
 		dq.push_back(atoi(argv[i]));
 	d.start = std::clock();
 	d.end  = sort<std::deque<int>, std::deque<std::pair<int, int> > >(dq);
+	std::cout << "After : ";
+	for (std::deque<int>::iterator it = dq.begin(); it != dq.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
 	(void)v;
 	(void)d;
-	//d.start = std::clock();
-//	d.end = sort_deque(dq);
 }

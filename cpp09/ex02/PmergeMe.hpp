@@ -11,8 +11,6 @@ typedef struct s_time
 	std::clock_t end;
 } t_time;
 
-int jacobsthal(int n);
-
 template <typename C>
 void merge(C &big, int left, int middle, int right)
 {
@@ -76,12 +74,32 @@ void merge_sort(C &big, int left, int right)
 template <typename C>
 void insert(C &big, C &small, C &jacob)
 {
+	int size = big.size();
 	(void)jacob;
 	big.insert(big.begin(), small[0]);
-	std::cout << "big : ";
-	for (typename C::iterator it = big.begin(); it != big.end(); it++)
-		std::cout << *it << " ";
-	std::cout << "\n";
+	int previous_i = 0;
+	for (typename C::iterator it = jacob.begin(); it != jacob.end() && *it <= size; it++)
+	{
+		int i = *it - 1;
+		big.insert(std::lower_bound(big.begin(), big.end(), small[i]), small[i]);
+		while (--i > previous_i)
+			big.insert(std::lower_bound(big.begin(), big.end(), small[i]), small[i]);
+		previous_i = *it - 1;
+	}
+	while (previous_i < size - 1)
+	{
+		big.insert(std::lower_bound(big.begin(), big.end(), small[previous_i]), small[previous_i]);
+		previous_i++;
+	}
+}
+template <typename C>
+int jacobsthal(int n, C &jacob)
+{
+    if (n == 0)
+        return 0;
+    if (n == 1)
+        return 1;
+    return jacob[n - 1] + 2 * jacob[n - 2];
 }
 
 template <typename C, typename P>
@@ -102,44 +120,24 @@ std::clock_t sort(C &cont)
 	}
 	for (typename P::iterator it = pairs.begin(); it != pairs.end(); it++)
 		it->first < it->second ? std::swap(it->first, it->second): (void)it;
-//	std::cout << "pairs : ";
-//	for (typename P::iterator it = pairs.begin(); it != pairs.end(); it++)
-//	{
-//		std::cout << it->first << "-";
-//		std::cout << it->second << " ";
-//	}
-//	std::cout << "\n";
 	C big;
 	C small;
 	C jacob;
+	jacob.push_back(0);
+	jacob.push_back(1);
 	for (size_t i = 0; i < size; i++)
-		jacob.push_back(jacobsthal(i));
+		jacob.push_back(jacobsthal(i, jacob));
 	jacob.erase(jacob.begin(), jacob.begin() + 3);
-	std::cout << "jacob : ";
-	for (typename C::iterator it = jacob.begin(); it != jacob.end(); it++)
-		std::cout << *it << " ";
-	std::cout << "\n";
 	merge_sort(pairs, 0, pairs.size() - 1);
 	for (typename P::iterator it = pairs.begin(); it < pairs.end(); it++)
 	{
 		big.push_back(it->first);
 		small.push_back(it->second);
 	}
-	std::cout << "small : ";
-	for (typename C::iterator it = small.begin(); it != small.end(); it++)
-		std::cout << *it << " ";
-	std::cout << "\n";
-	std::cout << "big : ";
-	for (typename C::iterator it = big.begin(); it != big.end(); it++)
-		std::cout << *it << " ";
-	std::cout << "\n";
 	insert(big, small, jacob);
 	if (odd)
 		big.insert(std::lower_bound(big.begin(), big.end(), last), last);//insert last with binary search
-	std::cout << "big with last : ";
-	for (typename C::iterator it = big.begin(); it != big.end(); it++)
-		std::cout << *it << " ";
-	std::cout << "\n";
+	cont = big;
 	return (std::clock());
 }
 
