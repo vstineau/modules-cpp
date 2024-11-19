@@ -3,7 +3,6 @@
 
 #include <algorithm>
 #include <ctime>
-#include <iostream>
 
 typedef struct s_time
 {
@@ -75,7 +74,6 @@ template <typename C>
 void insert(C &big, C &small, C &jacob)
 {
 	int size = big.size();
-	(void)jacob;
 	big.insert(big.begin(), small[0]);
 	int previous_i = 0;
 	for (typename C::iterator it = jacob.begin(); it != jacob.end() && *it <= size; it++)
@@ -86,10 +84,9 @@ void insert(C &big, C &small, C &jacob)
 			big.insert(std::lower_bound(big.begin(), big.end(), small[i]), small[i]);
 		previous_i = *it - 1;
 	}
-	while (previous_i < size - 1)
+	while (++previous_i < size)
 	{
 		big.insert(std::lower_bound(big.begin(), big.end(), small[previous_i]), small[previous_i]);
-		previous_i++;
 	}
 }
 template <typename C>
@@ -123,8 +120,6 @@ std::clock_t sort(C &cont)
 	C big;
 	C small;
 	C jacob;
-	jacob.push_back(0);
-	jacob.push_back(1);
 	for (size_t i = 0; i < size; i++)
 		jacob.push_back(jacobsthal(i, jacob));
 	jacob.erase(jacob.begin(), jacob.begin() + 3);
