@@ -39,6 +39,8 @@ static	void handle_error(int i)
 
 static int search_data(std::map<Date, float> &db, Date &date, float &value)
 {
+	if (date.checkDate())
+		return (0);
 	if (!value)
 		return (4);
 	if (value < 0)
