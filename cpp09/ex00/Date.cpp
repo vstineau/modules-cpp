@@ -14,7 +14,6 @@ static bool invalidDate(int y, int m, int d)
 	|| (m == 9 && d > 30)
 	|| (m == 11 && d > 30))
 	{
-		//std::cout << "years = " << y << "month = " << m << " days = " << d << std::endl;
 		return true;
 	}
 	else
@@ -73,7 +72,7 @@ bool Date::operator<(Date const & src) const
 std::ostream &operator<<(std::ostream &o, Date const &d)
 {
 	o << d._year << "-";
-	d._month < 10 ? o << "0" <<d._month << "-" : o << d._month;
+	d._month < 10 ? o << "0" <<d._month << "-" : o << d._month << "-";
 	d._day < 10 ? o << "0" <<d._day : o << d._day;
 	return (o);
 }

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stack>
 #include <cstdlib>
+#include <limits>
 
 static int is_not_number_or_operator(char c)
 {
@@ -30,12 +31,12 @@ static int count_number_and_operator(std::string &op)
 
 static int do_op(std::stack<int> &s, char c)
 {
-	int x;
-	int y;
+	long x;
+	long y;
 
 	if (s.size() < 2)
 	{
-		std::cout << "Error: wrong number of operator or number\n";
+		std::cerr << "Error: wrong number of operator or number\n";
 		return (1);
 	}
 	x = s.top();
@@ -45,15 +46,25 @@ static int do_op(std::stack<int> &s, char c)
 	switch (c)
 	{
 		case '+':
+			if (y + x > std::numeric_limits<int>::max())
+				return (std::cerr << "Error: result overflow\n",1);
 			s.push(y + x);
 			break;
 		case '-':
+			if (y - x < std::numeric_limits<int>::min())
+				return (std::cerr << "Error: result overflow\n",1);
 			s.push(y - x);
 			break;
 		case '/':
+			if (x == 0)
+				return (std::cerr << "Error: try to divide by 0\n",1);
+			if (y - x < std::numeric_limits<int>::min())
+				return (std::cerr << "Error: result overflow\n",1);
 			s.push(y / x);
 			break;
 		case '*':
+			if (y * x > std::numeric_limits<int>::max())
+				return (std::cerr << "Error: result overflow\n",1);
 			s.push(y * x);
 			break;
 	}

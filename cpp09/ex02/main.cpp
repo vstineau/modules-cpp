@@ -58,10 +58,10 @@ int main(int argc, char *argv[])
 	for (std::vector<int>::iterator it = vect.begin(); it != vect.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
-	std::cout << "Time to process a range of 3000 elements with std::vector : ";
+	std::cout << "Time to process a range of " << argc - 1 <<" elements with std::vector : ";
 	std::cout << std::fixed << std::setprecision(5);
 	std::cout << 1000.0 * (v.end - v.start) / CLOCKS_PER_SEC << "ms\n";
-	std::cout << "Time to process a range of 3000 elements with std::deque : ";
+	std::cout << "Time to process a range of " << argc - 1 <<" elements with std::deque : ";
 	std::cout << std::fixed << std::setprecision(5);
 	std::cout << 1000.0 * (d.end - d.start) / CLOCKS_PER_SEC << "ms\n";
 //	if (!std::is_sorted(vect.begin(), vect.end()) || !std::is_sorted(dq.begin(), dq.end()))
