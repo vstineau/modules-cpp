@@ -1,4 +1,4 @@
-NAME = executable
+NAME = btc
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -MMD -g3 -std=c++98
 OBJ_PATH = .obj/

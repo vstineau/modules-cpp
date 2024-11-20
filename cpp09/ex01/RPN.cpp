@@ -35,7 +35,7 @@ static int do_op(std::stack<int> &s, char c)
 
 	if (s.size() < 2)
 	{
-		std::cout << "Error: wrong number of operator\n";
+		std::cout << "Error: wrong number of operator or number\n";
 		return (1);
 	}
 	x = s.top();
