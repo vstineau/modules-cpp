@@ -76,13 +76,16 @@ void insert(C &big, C &small, C &jacob)
 	int size = big.size();
 	big.insert(big.begin(), small[0]);
 	int previous_i = 0;
-	for (typename C::iterator it = jacob.begin(); it != jacob.end() && *it <= size; it++)
+	if (jacob[0] != 0)
 	{
-		int i = *it - 1;
-		big.insert(std::lower_bound(big.begin(), big.end(), small[i]), small[i]);
-		while (--i > previous_i)
+		for (typename C::iterator it = jacob.begin(); it != jacob.end() && *it <= size; it++)
+		{
+			int i = *it - 1;
 			big.insert(std::lower_bound(big.begin(), big.end(), small[i]), small[i]);
-		previous_i = *it - 1;
+			while (--i > previous_i)
+				big.insert(std::lower_bound(big.begin(), big.end(), small[i]), small[i]);
+			previous_i = *it - 1;
+		}
 	}
 	while (++previous_i < size)
 	{
@@ -122,7 +125,8 @@ std::clock_t sort(C &cont)
 	C jacob;
 	for (size_t i = 0; i < size; i++)
 		jacob.push_back(jacobsthal(i, jacob));
-	jacob.erase(jacob.begin(), jacob.begin() + 3);
+	if (size > 3)
+		jacob.erase(jacob.begin(), jacob.begin() + 3);// fix me daddy;
 	merge_sort(pairs, 0, pairs.size() - 1);
 	for (typename P::iterator it = pairs.begin(); it < pairs.end(); it++)
 	{
