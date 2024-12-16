@@ -126,7 +126,7 @@ std::clock_t sort(C &cont)
 	for (size_t i = 0; i < size; i++)
 		jacob.push_back(jacobsthal(i, jacob));
 	if (size > 3)
-		jacob.erase(jacob.begin(), jacob.begin() + 3);// fix me daddy;
+		jacob.erase(jacob.begin(), jacob.begin() + 3);
 	merge_sort(pairs, 0, pairs.size() - 1);
 	for (typename P::iterator it = pairs.begin(); it < pairs.end(); it++)
 	{
